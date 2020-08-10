@@ -1,0 +1,41 @@
+@mixin clearfix {
+    &::after{
+    content: "";
+    clear: both;   
+    display: table;
+   }
+
+}
+
+
+
+/* 
+(0-600px) for phone
+(600-900px) for tablet-portrait
+(900px-1200px) for tablet-landscape
+
+from 1200px to 1800px normal styles (without use of quere)
+
+1800+ for big disktops
+*/
+
+// for responsive design implemntation 
+
+@mixin response ($size) {
+    
+    @if $size == phone {
+        @media only screen and (max-width:37.5em) { @content;} //600px
+    }
+
+    @if $size == tab-port {
+        @media  only screen and (max-width:56.25em) { @content;} //900px
+    }
+
+    @if $size == tab-land {
+        @media only screen and (max-width:75em) { @content;} //1200px
+    }
+    
+    @if $size == big-screen {
+        @media only screen and (min-width:112.5em) { @content;} //1800px
+    }
+}
